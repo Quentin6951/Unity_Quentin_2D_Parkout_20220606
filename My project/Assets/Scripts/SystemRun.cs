@@ -38,11 +38,27 @@ public class SystemRun : MonoBehaviour
         #endregion
 
         #region 事件 : 程式入口
+        //喚醒事件 : 開始事件前執行一次，取得元件等等
+        private void Awake()
+        {
+            //ani 指定 人物身上的 Animator
+            ani = GetComponent<Animator>();
+        }
+
+
+
         //開始事件 : 播放遊戲時執行一次
         //初始化設定、例如 : 英雄聯盟 500 塊金幣、生命初始化 3條命
         private void Start()
         {
             print("遊戲開始 ^.^");
+        }
+
+        //更新事件 : 每秒執行約六十次 60FPS per second
+        private void Update()
+        {
+            print("<color=yellow>更新事件執行中~</color>");
+
         }
 
         #endregion
