@@ -8,6 +8,8 @@ namespace Quentin
 /// <summary>
 /// 跑步系統
 /// </summary>
+      
+
 public class SystemRun : MonoBehaviour
  {
         #region 資料 : 保存系統需要的資料
@@ -27,13 +29,24 @@ public class SystemRun : MonoBehaviour
         //Range 範圍 : 僅限於數值類型資料 int, float ,byte, long
         [SerializeField, Header("跑步速度"), Tooltip("角色的跑步速度"), Range(0, 100)]
         private float speedRun = 3.5f; //跑步速度
-        [SerializeField, Header("跳躍高度"), Tooltip("角色的跳躍高度"), Range(0, 1000)]
-        private float heightJump = 350; //跳躍高度
+       
         private Animator ani;   //動畫控制
         private Rigidbody2D rig;    //物理現象
         #endregion
 
         #region 功能 : 實作該系統的複雜方法
+         // 方法 Method
+         // 語法
+         //修飾詞 傳回資料類型  方法名稱(參數) { 程式 }
+         /// <summary>
+         /// 跑步功能
+         /// </summary>
+
+        private void Run()
+        {
+            print("跑步中~");
+            rig.velocity = new Vector2(speedRun, rig.velocity.y);
+        }
 
         #endregion
 
@@ -42,7 +55,9 @@ public class SystemRun : MonoBehaviour
         private void Awake()
         {
             //ani 指定 人物身上的 Animator
-            ani = GetComponent<Animator>();
+            ani = GetComponent<Animator>(); //控制動畫
+            rig = GetComponent<Rigidbody2D>(); //控制鋼體(Rigidbody 2D)
+
         }
 
 
@@ -51,16 +66,20 @@ public class SystemRun : MonoBehaviour
         //初始化設定、例如 : 英雄聯盟 500 塊金幣、生命初始化 3條命
         private void Start()
         {
-            print("遊戲開始 ^.^");
+           // print("遊戲開始 ^.^");
         }
 
         //更新事件 : 每秒執行約六十次 60FPS per second
         private void Update()
         {
-            print("<color=yellow>更新事件執行中~</color>");
+            // print("<color=yellow>更新事件執行中~</color>");
 
+
+            //呼叫方法 : 方法名稱(對應的引數)
+
+            Run();
+            
         }
-
         #endregion
     }
 }
