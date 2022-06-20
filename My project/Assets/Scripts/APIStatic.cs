@@ -7,6 +7,9 @@ namespace Quentin
     /// </summary>
 public class APIStatic : MonoBehaviour
 {
+        private Vector3 a = new Vector3(1, 1, 1);
+        private Vector3 b = new Vector3(22, 22, 22);
+
         private void Start()
         {
             #region 學習
@@ -40,6 +43,18 @@ public class APIStatic : MonoBehaviour
                 Debug.Log("應用程式的平台");
 
 
+            Physics.sleepThreshold = 10;
+            print("睡眠臨界值 : " + Physics.sleepThreshold);
+
+            Time.timeScale = 0.5f;
+            print("時間大小 : " + Time.timeScale);
+            print("對 9.999 去小數點四捨五入 : " + Mathf.Round(9.9999f));
+
+            float distance = Vector3.Distance(a, b);
+            print("<color=blue>距離 : " + distance + "</color>");
+
+            Application.OpenURL("https://unity.com/");
+
             #endregion
 
 
@@ -55,6 +70,10 @@ public class APIStatic : MonoBehaviour
 
             #region 學習
 
+            print("是否按下任意鍵 : " + Input.anyKeyDown);
+            print("遊戲經過時間 : " + Time.timeSinceLevelLoad);
+
+            print("<color=red>是否按下空白鍵 : " + Input.GetKeyDown(KeyCode.Space) + "</color>");
 
             #endregion
 
