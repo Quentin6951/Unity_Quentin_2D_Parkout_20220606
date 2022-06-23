@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class NonStatic : MonoBehaviour
 {
-    [SerializeField] Camera Äá¼v¾÷;
-    [SerializeField] SphereCollider ¸I¼²¾¹;
-    [SerializeField] Transform ½¦ÅnÅé, ¥ß¤èÅé;
-    [SerializeField] Rigidbody ¥[¦V¤W¤O;
+    [SerializeField] Camera æ”å½±æ©Ÿ;
+    [SerializeField] SphereCollider ç¢°æ’å™¨;
+    [SerializeField] Transform è† å›Šé«”, ç«‹æ–¹é«”;
+    [SerializeField] Rigidbody åŠ å‘ä¸ŠåŠ›;
     private void Start()
-    {   //Äá¼v¾÷²`«× (Depth)
-        print(Äá¼v¾÷.depth);
-        //Åé¸I¼²¾¹¥b®|
-        print(¸I¼²¾¹.radius);
-        //Äá¼v¾÷ªº­I´ºÃC¦â«ü©w¬°ÀH¾÷ÃC¦â
+    {   //æ”å½±æ©Ÿæ·±åº¦ (Depth)
+        print(æ”å½±æ©Ÿ.depth);
+        //é«”ç¢°æ’å™¨åŠå¾‘
+        print(ç¢°æ’å™¨.radius);
+        //æ”å½±æ©Ÿçš„èƒŒæ™¯é¡è‰²æŒ‡å®šç‚ºéš¨æ©Ÿé¡è‰²
         float r = Random.Range(0f, 1f);
         float g = Random.Range(0f, 1f);
         float b = Random.Range(0f, 1f);
         Color Color = new Color(r, g, b);
-        Äá¼v¾÷.backgroundColor = Color;
-        //½¦ÅnÅé¤Ø¤o§ï¬° 3, 2, 1
-        ½¦ÅnÅé.localScale = new Vector3(3, 2, 1);
+        æ”å½±æ©Ÿ.backgroundColor = Color;
+        //è† å›Šé«”å°ºå¯¸æ”¹ç‚º 3, 2, 1
+        è† å›Šé«”.localScale = new Vector3(3, 2, 1);
     }
 
     private void Update()
     {
-        //Åı¥ß¤èÅé¬İµÛ²yÅé±ÛÂà
-        ¥ß¤èÅé.RotateAround(¥ß¤èÅé.gameObject.transform.position, Vector3.forward, 100 * Time.deltaTime);
+        //è®“ç«‹æ–¹é«”çœ‹è‘—çƒé«”æ—‹è½‰
+        ç«‹æ–¹é«”.RotateAround(ç¢°æ’å™¨.gameObject.transform.position, Vector3.forward, 100 * Time.deltaTime);
 
-        //Åı½¦ÅnÅé©¹¤W²£¥Í±À¤O
-        ¥[¦V¤W¤O.AddForce(new Vector3(0, 4, 0));
+        //è®“è† å›Šé«”å¾€ä¸Šç”¢ç”Ÿæ¨åŠ›
+        åŠ å‘ä¸ŠåŠ›.AddForce(new Vector3(0, 4, 0));
 
 
 
