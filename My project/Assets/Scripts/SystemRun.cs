@@ -80,6 +80,17 @@ public class SystemRun : MonoBehaviour
             Run();
             
         }
+        // 此元件被勾選時執行一次
+       private void OnEnable()
+        {
+            
+        }
+        // 此元件被取消時執行一次
+        private void OnDisable()
+        {
+            //加速度歸零
+            rig.velocity = Vector3.zero;
+        }
         #endregion
     }
 }
