@@ -20,12 +20,18 @@ namespace Quentin
         private Color colorCheckGround = new Color(1,0,0.2f,0.5f);
         [SerializeField, Header("檢查地板圖層")]
         private LayerMask layerCheckGround;
+        [SerializeField, Header("跳躍動畫參數")]
+        private string nameJump = "開關跳躍";
+        [SerializeField, Header("跳躍音效")]
+        private AudioClip soundJump;
+
 
 
         private Animator ani;   //動畫控制
         private Rigidbody2D rig;    //物理現象
         private bool clickJump;
         private bool isGround;
+        private AudioSource aud;
         #endregion
 
         #region 事件
@@ -43,6 +49,7 @@ namespace Quentin
         {
             ani = GetComponent<Animator>();  //控制動畫
             rig = GetComponent<Rigidbody2D>(); //控制鋼體 (Rigidbody 2D)
+            aud = GetComponent<AudioSource>();
         }
 
         // Inpot API  建議在  Update  呼叫
@@ -51,6 +58,7 @@ namespace Quentin
         {
             JumpKey();
             CheckGround();
+            UpdateAnimator();
         }
 
 
@@ -88,6 +96,8 @@ namespace Quentin
                 rig.velocity = Vector3.zero;
                 rig.AddForce(new Vector2(0, heightJump));
                 clickJump = false;
+                //音效來源.撥放一次音效(音效片段，音量)
+                aud.PlayOneShot(soundJump, Random.Range(3.7f, 2.5f));
             }
         }
 
@@ -100,6 +110,10 @@ namespace Quentin
             Collider2D hit = Physics2D.OverlapBox(transform.position + v3CheckGroundoffset, v3CheckGroundSize, 0, layerCheckGround);
             //print("碰到的物件 :" + hit.name);
             isGround = hit;
+        }
+        private void UpdateAnimator()
+        {
+            ani.SetBool(nameJump, !isGround);
         }
         #endregion
     }
